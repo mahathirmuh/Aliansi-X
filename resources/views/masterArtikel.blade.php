@@ -94,17 +94,15 @@
   ============================-->
   <section id="intro">
 
-    <div class="intro-content wow zoomIn">
+    <!-- <div class="intro-content wow zoomIn">
       <h2>SELAMAT<span>DATANG</span><br>DI WEBSITE RESMI DESA X</h2>
       <div>
         @yield('button')
       </div>
-    </div>
+    </div> -->
 
     <div id="intro-carousel" class="owl-carousel" >
-      @foreach($slider as $Slider)
-      <div class="item"> <img src="{{url('img/inicover/'.$Slider->slider_photo)}}" alt="{{$Slider->picture_title}}"> </div>
-      @endforeach
+      @yield('slider')
     </div>
 
   </section><!-- #intro -->
@@ -116,7 +114,6 @@
     ============================-->
 
     @yield('content')
-
     <!--==========================
       Services Section
     ============================-->

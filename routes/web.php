@@ -22,6 +22,10 @@ Route::get('/kegiatan-desa', 'PengunjungController@kegiatan');
 Route::get('/struktur-organisasi', 'PengunjungController@struktur');
 Route::get('/kegiatan-desa/{id}', 'PengunjungController@artikelkegiatan');
 Route::get('/potensi-desa/{id}', 'PengunjungController@artikelpotensi');
+Route::get('/artikel', function(){
+  $slider = \App\Slider::all();
+  return view('pengunjung.artikel', compact('slider'));
+});
 Auth::routes();
 Route::group(['middleware' => ['web', 'auth']], function(){
   //Route for Admin
