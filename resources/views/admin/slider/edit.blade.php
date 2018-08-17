@@ -7,16 +7,43 @@
     <div class="col-md-11" style="margin-left: 1px; width: 94%">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          Tambah Misi Desa
+          Edit Foto Slider
         </div>
         <div class="panel-body">
-          {!! Form::open(['url'=>'admin/potensi-simpan','class'=>'form-horizontal', 'files' => true]) !!}
-          @include('admin.potensi.form')
+          {!! Form::model($slider,['url'=>'admin/slider-update/'.$slider->id,'class'=>'form-horizontal', 'files' => true]) !!}
+
+          <div class="form-group">
+            @if($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                  <b>Foto Slider</b>
+                </div>
+                <div class="panel-body text-center">
+                  <img id="preview" src="{{asset('img/inicover/'.$slider->slider_photo)}}" alt="preview" width="1000px" height="380px">
+                  <div class="col-sm-12" style="margin-top: 10px; display: none;">
+                    {!! Form::file('slider_photo', ['id' => 'image']) !!}
+                  </div>
+                  <a href="javascript:changeProfile()" class="btn btn-success pull-right" style="margin-top: 10px;"> <i class="fa fa-upload"></i> Pilih Gambar </a>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div style="width: 100%; text-align: center;">
             <button type="submit" id="upload" class="btn btn-primary pull-right" style="margin-left: 2px; margin-top: 10px;"> <i class="fa fa-check"></i> Simpan </button>
-            <a class="btn btn-danger pull-right" onClick="window.location.reload();" style="margin-top: 10px; margin-left: 2px;"> <i class="fa fa-trash"></i> Bersihkan </a>
-            <a href="{{url('admin/potensi')}}" class="btn btn-warning pull-right" style="margin-top: 10px"> <i class="fa fa-arrow-left"></i> Kembali </a>
+            <a class="btn btn-warning pull-right" onClick="history.go(-1)" style="margin-top: 10px;"> <i class="fa fa-arrow-left"></i> Kembali </a>
           </div>
           {!! Form::close() !!}
         </div>
@@ -27,6 +54,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+
     function changeProfile() {
         $('#image').click();
     }
@@ -57,6 +85,8 @@
     $('#upload').change(function(){
       if($(this).val() != ''){
         upload(this);
+      }else{
+        continue;
       }
     });
 

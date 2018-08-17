@@ -26,9 +26,7 @@ Auth::routes();
 Route::group(['middleware' => ['web', 'auth']], function(){
   //Route for Admin
 
-  Route::get('admin', function(){
-    return view('admin.home');
-  });
+  Route::get('admin', 'AdminHomeController@home');
   //Potensi Route
   Route::get('admin/potensi', 'PotentialController@index');
   Route::get('admin/potensi-tambah', 'PotentialController@create');
@@ -59,6 +57,21 @@ Route::group(['middleware' => ['web', 'auth']], function(){
   Route::get('admin/user-info-edit/{id}', 'UserController@edit');
   Route::post('admin/user-info-update/{id}', 'UserController@update');
 
+  Route::get('admin/profil-desa-edit/{id}', 'ProfileController@edit');
+  Route::post('admin/profil-desa-update/{id}', 'ProfileController@update');
+
+  Route::get('admin/slider', 'SliderController@index');
+  Route::get('admin/slider-edit/{id}', 'SliderController@edit');
+  Route::post('admin/slider-update/{id}', 'SliderController@update');
+
+  Route::get('admin/visi-misi/{id}', 'VisionController@index');
+  Route::post('admin/visi-update/{id}', 'VisionController@update');
+
+  Route::get('admin/misi-tambah', 'MissionController@create');
+  Route::post('admin/misi-simpan', 'MissionController@store');
+  Route::get('admin/misi-edit/{id}', 'MissionController@edit');
+  Route::post('admin/misi-update/{id}', 'MissionController@update');
+  Route::get('admin/misi-hapus/{id}', 'MissionController@destroy');
 });
 
 //Route for Login
