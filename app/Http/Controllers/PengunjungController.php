@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Activity;
 use App\Potential;
 use App\Structure;
+use App\Profile;
+use App\Slider;
+use App\Vision;
+use App\Mission;
 
 class PengunjungController extends Controller
 {
@@ -16,9 +20,14 @@ class PengunjungController extends Controller
      */
     public function index()
     {
-        $activities = Activity::orderBy('id', 'desc')->take(7)->get();
-        $potentials = Potential::orderBy('id', 'desc')->take(7)->get();
-        return view('pengunjung.home', compact('activities','potentials'));
+        // $activities = Activity::orderBy('id', 'desc')->take(7)->get();
+        // $potentials = Potential::orderBy('id', 'desc')->take(7)->get();
+        // return view('pengunjung.home', compact('activities','potentials'));
+        $slider = Slider::all();
+        $profile = Profile::all();
+        $vision = Vision::all();
+        $missions = Mission::all();
+        return view('pengunjung.home', compact('profile','slider','vision','missions'));
     }
 
     /**
