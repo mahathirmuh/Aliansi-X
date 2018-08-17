@@ -102,17 +102,9 @@
     </div>
 
     <div id="intro-carousel" class="owl-carousel" >
-<<<<<<< HEAD
-      <div class="item"> <img src="{{url('img/inicover/a.jpg ')}}" alt=""> </div>
-      <div class="item"> <img src="{{url('img/inicover/b.jpg ')}}" alt=""> </div>
-      <div class="item"> <img src="{{url('img/inicover/c.jpg ')}}" alt=""> </div>
-      <div class="item"> <img src="{{url('img/inicover/d.jpg ')}}" alt=""> </div>
-      <div class="item"> <img src="{{url('img/inicover/e.jpg ')}}" alt=""> </div>
-=======
       @foreach($slider as $Slider)
       <div class="item"> <img src="{{url('img/inicover/'.$Slider->slider_photo)}}" alt="{{$Slider->picture_title}}"> </div>
       @endforeach
->>>>>>> 35f067b865d5786297cf9f7cdf7d1dc5d48a5b39
     </div>
 
   </section><!-- #intro -->
@@ -124,6 +116,7 @@
     ============================-->
 
     @yield('content')
+
     <!--==========================
       Services Section
     ============================-->
