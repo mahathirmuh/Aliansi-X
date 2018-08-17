@@ -80,7 +80,7 @@
           <!-- <li <a href="{{url('/')}}">Beranda</a></li> -->
           <li><a href="{{url('/')}}">Beranda</a></li>
           <li><a href="{{url('/artikel')}}">Kegiatan Desa</a></li>
-          <li><a href="{{url('/struktur-organisasi')}}">Struktur Organisasi</a></li>
+          <li><a href="{{url('/struktur-organisasi')}}">Potensi Desa</a></li>
           <!-- <li><a href="#portfolio">Portfolio</a></li> -->
           <!-- <li><a href="#team">Peta Desa</a></li> -->
           <li><a style="color:#50d8af; "href="#contact"><i class="fa fa-phone"></i> Hubungi Kami</a></li>
@@ -120,6 +120,7 @@
       Services Section
     ============================-->
   </main>
+
 
   <!--==========================
     Footer

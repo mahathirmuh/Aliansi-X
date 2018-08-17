@@ -3,7 +3,7 @@
 <section id="profil">
   <div class="container">
     <div class="section-header">
-      <h2>KEGIATAN DESA</h2>
+      <h2>POTENSI DESA</h2>
     </div>
     <section id="call-to-action" class="wow fadeInUp">
       <div class="container">
