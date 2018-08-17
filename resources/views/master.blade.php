@@ -104,10 +104,10 @@
 
     <div id="intro-carousel" class="owl-carousel" >
       <div class="item"> <img src="{{url('img/inicover/a.jpg ')}}" alt=""> </div>
-      <div class="item"> <img src="{{url('img/inicover/a.jpg ')}}" alt=""> </div>
-      <div class="item"> <img src="{{url('img/inicover/a.jpg ')}}" alt=""> </div>
-      <div class="item"> <img src="{{url('img/inicover/a.jpg ')}}" alt=""> </div>
-      <div class="item"> <img src="{{url('img/inicover/a.jpg ')}}" alt=""> </div>
+      <div class="item"> <img src="{{url('img/inicover/b.jpg ')}}" alt=""> </div>
+      <div class="item"> <img src="{{url('img/inicover/c.jpg ')}}" alt=""> </div>
+      <div class="item"> <img src="{{url('img/inicover/d.jpg ')}}" alt=""> </div>
+      <div class="item"> <img src="{{url('img/inicover/e.jpg ')}}" alt=""> </div>
     </div>
 
   </section><!-- #intro -->
