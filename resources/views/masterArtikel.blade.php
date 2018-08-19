@@ -92,7 +92,7 @@
   <!--==========================
     Intro Section
   ============================-->
-  <section id="intro">
+  <!-- <section id="intro"> -->
 
     <!-- <div class="intro-content wow zoomIn">
       <h2>SELAMAT<span>DATANG</span><br>DI WEBSITE RESMI DESA X</h2>
@@ -101,11 +101,12 @@
       </div>
     </div> -->
 
-    <div id="intro-carousel" class="owl-carousel" >
+    <!-- <div id="intro-carousel" class="owl-carousel" >
       @yield('slider')
-    </div>
+    </div> -->
 
-  </section><!-- #intro -->
+  <!-- </section> -->
+  <!-- #intro -->
 
   <main id="main">
 
