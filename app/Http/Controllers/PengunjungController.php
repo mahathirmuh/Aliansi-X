@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Activity;
-use App\Potential;
 use App\Structure;
 use App\Profile;
 use App\Slider;
 use App\Vision;
 use App\Mission;
+use App\Map;
+use App\Borderline;
+use App\Activity;
 
 class PengunjungController extends Controller
 {
@@ -20,14 +21,16 @@ class PengunjungController extends Controller
      */
     public function index()
     {
-        // $activities = Activity::orderBy('id', 'desc')->take(7)->get();
+        $activities = Activity::orderBy('id', 'desc')->take(8)->get();
         // $potentials = Potential::orderBy('id', 'desc')->take(7)->get();
         // return view('pengunjung.home', compact('activities','potentials'));
         $slider = Slider::all();
         $profile = Profile::all();
         $vision = Vision::all();
         $missions = Mission::all();
-        return view('pengunjung.home', compact('profile','slider','vision','missions'));
+        $map = Map::find(1);
+        $borderlines = Borderline::all();
+        return view('pengunjung.home', compact('profile','slider','vision','missions', 'map', 'borderlines', 'activities'));
     }
 
     /**

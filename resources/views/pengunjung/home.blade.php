@@ -49,17 +49,17 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 about-img">
-        <img src="img/about-img.jpg" alt="">
+        <img src="{{asset('map/'.$map->map)}}" alt="{{$map->map_title}}" width="550px" height="550px">
       </div>
 
       <div class="col-lg-6 content">
-        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-        <h3>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
+        <h2>Peta Desa Mendik</h2>
+        <h3>Desa Mendik memiliki batas wilayah sebagai berikut : </h3>
 
         <ul>
-          <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-          <li><i class="ion-android-checkmark-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-          <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+          @foreach($borderlines as $Borderline)
+          <li><i class="ion-android-checkmark-circle"></i>{{$Borderline->jenis_batas}} : {{$Borderline->nama_batas}}</li>
+          @endforeach
         </ul>
 
       </div>
@@ -74,101 +74,21 @@
   <div class="container">
     <div class="section-header">
       <h2>Galeri Kegiatan Desa</h2>
-      <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
+      <p>Ini adalah galeri kegiatan-kegiatan terbaru desa Mendik</p>
     </div>
   </div>
 
   <div class="container-fluid">
     <div class="row no-gutters">
-
+      @foreach($activities as $Activity)
       <div class="col-lg-3 col-md-4">
         <div class="portfolio-item wow fadeInUp">
-          <a href="img/portfolio/1.jpg" class="portfolio-popup">
-            <img src="img/portfolio/1.jpg" alt="">
-            <div class="portfolio-overlay">
-              <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 1</h2></div>
-            </div>
+          <a href="{{asset('images-kegiatan-desa/'.$Activity->mini_thumbnail)}}" class="portfolio-popup">
+            <img src="{{asset('images-kegiatan-desa/'.$Activity->mini_thumbnail)}}" alt="">
           </a>
         </div>
       </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="portfolio-item wow fadeInUp">
-          <a href="img/portfolio/2.jpg" class="portfolio-popup">
-            <img src="img/portfolio/2.jpg" alt="">
-            <div class="portfolio-overlay">
-              <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 2</h2></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="portfolio-item wow fadeInUp">
-          <a href="img/portfolio/3.jpg" class="portfolio-popup">
-            <img src="img/portfolio/3.jpg" alt="">
-            <div class="portfolio-overlay">
-              <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 3</h2></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="portfolio-item wow fadeInUp">
-          <a href="img/portfolio/4.jpg" class="portfolio-popup">
-            <img src="img/portfolio/4.jpg" alt="">
-            <div class="portfolio-overlay">
-              <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 4</h2></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="portfolio-item wow fadeInUp">
-          <a href="img/portfolio/5.jpg" class="portfolio-popup">
-            <img src="img/portfolio/5.jpg" alt="">
-            <div class="portfolio-overlay">
-              <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 5</h2></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="portfolio-item wow fadeInUp">
-          <a href="img/portfolio/6.jpg" class="portfolio-popup">
-            <img src="img/portfolio/6.jpg" alt="">
-            <div class="portfolio-overlay">
-              <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 6</h2></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="portfolio-item wow fadeInUp">
-          <a href="img/portfolio/7.jpg" class="portfolio-popup">
-            <img src="img/portfolio/7.jpg" alt="">
-            <div class="portfolio-overlay">
-              <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 7</h2></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="portfolio-item wow fadeInUp">
-          <a href="img/portfolio/8.jpg" class="portfolio-popup">
-            <img src="img/portfolio/8.jpg" alt="">
-            <div class="portfolio-overlay">
-              <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 8</h2></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
+      @endforeach
     </div>
 
   </div>

@@ -58,18 +58,25 @@ class ActivityController extends Controller
         for($i = 0; $i < count($photos); $i++){
           $photo = $photos[$i];
           $name = sha1(date('YmdHis') . str_random(30));
+          $mini_name = sha1(date('YmdHis') . str_random(30));
           $new_name = $name . str_random(2) . '.' . $photo->getClientOriginalExtension();
+          $mini_new_name = $mini_name . str_random(2) . '.' . $photo->getClientOriginalExtension();
         }
 
         Image::make($photo)
           ->resize(1000, 380)
           ->save($this->photos_path . '/' . $new_name);
 
+        Image::make($photo)
+          ->resize(800,600)
+          ->save($this->photos_path. '/' . $mini_new_name);
+
         $activity = new Activity;
         $activity->title = $request->title;
         $activity->description = $request->description;
         $activity->picture_title = "Gambar " . $request->title;
         $activity->thumbnail = $new_name;
+        $activity->mini_thumbnail = $mini_new_name;
         $activity->save();
 
         return redirect('admin/kegiatan-desa');
@@ -114,8 +121,13 @@ class ActivityController extends Controller
         if(!empty($photos)){
 
           $gambar = $this->photos_path . '/' . $activity->thumbnail;
+          $mini_gambar = $this->photos_path . '/' . $activity->mini_thumbnail;
           if(file_exists($gambar)){
             unlink($gambar);
+          }
+
+          if(file_exists($mini_gambar)){
+            unlink($mini_gambar);
           }
 
           if(!is_array($photos)){
@@ -125,14 +137,21 @@ class ActivityController extends Controller
           for($i = 0; $i < count($photos); $i++){
             $photo = $photos[$i];
             $name = sha1(date('YmdHis') . str_random(30));
+            $mini_name = sha1(date('YmdHis') . str_random(30));
             $new_name = $name . str_random(2) . '.' . $photo->getClientOriginalExtension();
+            $mini_new_name = $mini_name . str_random(2) . '.' . $photo->getClientOriginalExtension();
           }
 
           Image::make($photo)
             ->resize(1000,380)
             ->save($this->photos_path . '/' . $new_name);
 
+          Image::make($photo)
+            ->resize(800,600)
+            ->save($this->photos_path . '/' . $mini_new_name);
+
           $activity->thumbnail = $new_name;
+          $activity->mini_thumbnail = $mini_new_name;
         }
 
         $activity->title = $request->title;
@@ -158,9 +177,15 @@ class ActivityController extends Controller
         }
 
         $gambar = $this->photos_path . '/' . $activity->thumbnail;
+        $mini_gambar = $this->photos_path . '/' . $activity->mini_thumbnail;
+
 
         if(file_exists($gambar)){
           unlink($gambar);
+        }
+
+        if(file_exists($mini_gambar)){
+          unlink($mini_gambar);
         }
 
         if(!empty($activity)){

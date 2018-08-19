@@ -76,6 +76,11 @@ Route::group(['middleware' => ['web', 'auth']], function(){
   Route::get('admin/misi-edit/{id}', 'MissionController@edit');
   Route::post('admin/misi-update/{id}', 'MissionController@update');
   Route::get('admin/misi-hapus/{id}', 'MissionController@destroy');
+
+  Route::post('admin/peta-update/{id}', 'MapController@update');
+
+  Route::get('admin/batas-wilayah-edit/{id}', 'BorderlineController@edit');
+  Route::post('admin/batas-wilayah-update/{id}', 'BorderlineController@update');
 });
 
 //Route for Login

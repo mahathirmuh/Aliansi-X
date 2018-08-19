@@ -64,7 +64,7 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <h1><a href="#body" class="scrollto">KONOHA<span>TSUNA</span></a></h1>
+        <h1><a href="#body" class="scrollto"><img src="{{asset('img/daya-taka-colour_burned.png')}}" alt="" width="9%"> Desa<span>Mendik</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
       </div>
@@ -95,7 +95,7 @@
   <section id="intro">
 
     <div class="intro-content wow zoomIn">
-      <h2>SELAMAT<span>DATANG</span><br>DI WEBSITE RESMI DESA X</h2>
+      <h2>SELAMAT <span style="text-decoration: none;">DATANG</span><br>DI WEBSITE <span style="text-decoration: none;"> DESA MENDIK</span></h2>
       <div>
         @yield('button')
       </div>
