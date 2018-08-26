@@ -41,22 +41,6 @@
   <!--==========================
     Top Bar
   ============================-->
-  <section id="topbar" class="d-none d-lg-block">
-    <div class="container clearfix">
-      <div class="contact-info float-left">
-        <i class="fa fa-envelope-o"></i> <a href="mailto:Mahathirmuhammad02@gmail.com">MahathirMuhammad02@gmail.com</a>
-        <i class="fa fa-phone"></i> +62 853 4865 2074
-      </div>
-      <div class="social-links float-right">
-        <a href="https://www.twitter.com/mauliahar" class="twitter"><i class="fa fa-twitter"></i></a>
-        <a href="https://wwww.facebook.com/100008526373400" class="facebook"><i class="fa fa-facebook"></i></a>
-        <a href="https://wwww.instagram.com/mahathirmuh" class="instagram"><i class="fa fa-instagram"></i></a>
-        <!-- <a href="" class="google-plus"><i class="fa fa-google-plus"></i></a> -->
-        <!-- <a href="" class="linkedin"><i class="fa fa-linkedin"></i></a> -->
-      </div>
-    </div>
-  </section>
-
   <!--==========================
     Header
   ============================-->
@@ -80,10 +64,10 @@
           <!-- <li <a href="{{url('/')}}">Beranda</a></li> -->
           <li><a href="{{url('/')}}">Beranda</a></li>
           <li><a href="{{url('/artikel')}}">Kegiatan Desa</a></li>
-          <li><a href="{{url('/struktur-organisasi')}}">Potensi Desa</a></li>
+          <li><a href="{{url('/potensi-desa')}}">Potensi Desa</a></li>
           <!-- <li><a href="#portfolio">Portfolio</a></li> -->
           <!-- <li><a href="#team">Peta Desa</a></li> -->
-          <li><a style="color:#50d8af; "href="#contact"><i class="fa fa-phone"></i> Hubungi Kami</a></li>
+          @yield('buttonnyusahin')
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -92,22 +76,7 @@
   <!--==========================
     Intro Section
   ============================-->
-  <section id="intro">
-
-    <div class="intro-content wow zoomIn">
-      <h2>SELAMAT <span style="text-decoration: none;">DATANG</span><br>DI WEBSITE <span style="text-decoration: none;"> DESA MENDIK</span></h2>
-      <div>
-        @yield('button')
-      </div>
-    </div>
-
-    <div id="intro-carousel" class="owl-carousel" >
-      @foreach($slider as $Slider)
-      <div class="item"> <img src="{{url('img/inicover/'.$Slider->slider_photo)}}" alt="{{$Slider->picture_title}}"> </div>
-      @endforeach
-    </div>
-
-  </section><!-- #intro -->
+  @yield('slider')
 
   <main id="main">
 

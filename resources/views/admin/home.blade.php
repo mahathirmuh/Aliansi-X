@@ -48,7 +48,77 @@
       </div>
       @endforeach
   </div>
+
+  <div class="col-md-12" style="width: 100%">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Edit Telepon Desa Mendik
+      </div>
+      <div class="panel-body">
+        {!! Form::model($address, ['url' => 'admin/kontak-update/'.$address->id, 'class' => 'form-horizontal']) !!}
+
+          <div class="form-group">
+            @if($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach($errors->all() as $error)
+                    <li> {{ $error }} </li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-11">
+              {!! Form::text('kontak', null, ['class' => 'form-control', ]) !!}
+            </div>
+            <div class="col-xs-1">
+                <button type="submit" class="btn btn-md btn-primary pull-right" title="Edit data alamat desa Mendik" data-toggle="tooltip"> <i class="fa fa-check"></i> Simpan</button>
+            </div>
+
+          </div>
+
+        {!! Form::close() !!}
+      </div>
+    </div>
+  </div>
+
   <!-- ./col -->
+  <div class="col-md-12" style="width: 100%">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Edit Telepon Desa Mendik
+      </div>
+      <div class="panel-body">
+        {!! Form::model($phone, ['url' => 'admin/kontak-update/'.$phone->id, 'class' => 'form-horizontal']) !!}
+
+        <div class="form-group">
+          @if($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach($errors->all() as $error)
+              <li> {{ $error }} </li>
+              @endforeach
+            </ul>
+          </div>
+          @endif
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-11">
+            {!! Form::text('kontak', null, ['class' => 'form-control', ]) !!}
+          </div>
+          <div class="col-xs-1">
+            <button type="submit" class="btn btn-md btn-primary pull-right" title="Edit data telepon desa Mendik" data-toggle="tooltip"> <i class="fa fa-check"></i> Simpan</button>
+          </div>
+
+        </div>
+
+        {!! Form::close() !!}
+      </div>
+    </div>
+  </div>
   <div class="col-md-12" style="width: 100%">
     <div class="panel panel-primary">
       <div class="panel-heading">

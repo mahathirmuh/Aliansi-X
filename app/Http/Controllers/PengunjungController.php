@@ -11,6 +11,8 @@ use App\Mission;
 use App\Map;
 use App\Borderline;
 use App\Activity;
+use App\Potential;
+use App\Contact;
 
 class PengunjungController extends Controller
 {
@@ -21,7 +23,9 @@ class PengunjungController extends Controller
      */
     public function index()
     {
+        $contacts = Contact::all();
         $activities = Activity::orderBy('id', 'desc')->take(8)->get();
+        $structures = Structure::all();
         // $potentials = Potential::orderBy('id', 'desc')->take(7)->get();
         // return view('pengunjung.home', compact('activities','potentials'));
         $slider = Slider::all();
@@ -30,7 +34,7 @@ class PengunjungController extends Controller
         $missions = Mission::all();
         $map = Map::find(1);
         $borderlines = Borderline::all();
-        return view('pengunjung.home', compact('profile','slider','vision','missions', 'map', 'borderlines', 'activities'));
+        return view('pengunjung.home', compact('contacts','profile','slider','vision','missions', 'map', 'borderlines', 'activities', 'structures'));
     }
 
     /**
@@ -39,22 +43,26 @@ class PengunjungController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function kegiatan(){
+      $sliders = Slider::all();
       $activities = Activity::latest()->paginate(10);
-      return view('pengunjung.kegiatan', compact('activities'));
+      $contacts = Contact::all();
+      return view('pengunjung.kegiatan-desa', compact('activities', 'sliders', 'contacts'));
     }
 
-    public function struktur(){
-      $structures = Structure::all();
-      return view('pengunjung.struktur', compact('structures'));
-    }
-
-    public function artikelkegiatan($id){
+    public function bacakegiatan($id){
       $activity = Activity::find($id);
-      return view('pengunjung.artikelkegiatan', compact('activity'));
+      return view('pengunjung.baca-kegiatan-desa', compact('activity'));
     }
 
-    public function artikelpotensi($id){
+    public function potensi(){
+      $potentials = Potential::latest()->paginate(10);
+      $slider = Slider::all();
+      $contacts = Contact::all();
+      return view('pengunjung.potensi-desa', compact('potentials', 'slider', 'contacts'));
+    }
+
+    public function bacapotensi($id){
       $potential = Potential::find($id);
-      return view('pengunjung.artikelpotensi', compact('potential'));
+      return view('pengunjung.baca-potensi-desa', compact('potential'));
     }
 }

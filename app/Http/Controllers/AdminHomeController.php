@@ -7,6 +7,7 @@ use App\Profile;
 use App\Vision;
 use App\Map;
 use App\Borderline;
+use App\Contact;
 
 class AdminHomeController extends Controller
 {
@@ -15,6 +16,8 @@ class AdminHomeController extends Controller
       $vision = Vision::all();
       $map = Map::find(1);
       $borderlines = Borderline::all();
-      return view('admin.home', compact('profile', 'vision', 'map', 'borderlines'));
+      $address = Contact::find(1);
+      $phone = Contact::find(2);
+      return view('admin.home', compact('phone','address','profile', 'vision', 'map', 'borderlines'));
     }
 }

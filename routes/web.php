@@ -15,22 +15,16 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-
 //Route for visitor to navigate
 Route::get('/', 'PengunjungController@index');
-Route::get('/kegiatan-desa', 'PengunjungController@kegiatan');
-Route::get('/struktur-organisasi', 'PengunjungController@struktur');
-Route::get('/kegiatan-desa/{id}', 'PengunjungController@artikelkegiatan');
-Route::get('/potensi-desa/{id}', 'PengunjungController@artikelpotensi');
-Route::get('/artikel/BacaArtikel/',function(){
-  return view('pengunjung.BacaArtikel');
-});
+Route::get('/artikel/{id}', 'PengunjungController@bacakegiatan');
+Route::get('potensi-desa', 'PengunjungController@potensi');
+Route::get('potensi-desa/{id}', 'PengunjungController@bacapotensi');
+Route::get('/artikel', 'PengunjungController@kegiatan');
 
-Route::get('/artikel', function(){
-  $slider = \App\Slider::all();
-  return view('pengunjung.artikel', compact('slider'));
-});
-Auth::routes();
+
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::group(['middleware' => ['web', 'auth']], function(){
   //Route for Admin
 
@@ -85,6 +79,9 @@ Route::group(['middleware' => ['web', 'auth']], function(){
 
   Route::get('admin/batas-wilayah-edit/{id}', 'BorderlineController@edit');
   Route::post('admin/batas-wilayah-update/{id}', 'BorderlineController@update');
+
+  Route::post('admin/kontak-update/{id}', 'ContactController@update');
+
 });
 
 //Route for Login

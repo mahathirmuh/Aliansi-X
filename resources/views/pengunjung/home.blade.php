@@ -1,8 +1,33 @@
 @extends('master')
+
+@section('buttonnyusahin')
+  <li><a style="color:#50d8af;" href="#contact"><i class="fa fa-phone"></i> Hubungi Kami</a></li>
+@endsection
+
 @section('button')
 <a href="#profil" class="btn-get-started scrollto">Profil & Sejarah</a>
 <a href="#peta" class="btn-projects scrollto">Peta Desa</a>
 @endsection
+
+@section('slider')
+<section id="intro">
+
+  <div class="intro-content wow zoomIn">
+    <h2>SELAMAT <span style="text-decoration: none;">DATANG</span><br>DI WEBSITE <span style="text-decoration: none;"> DESA MENDIK</span></h2>
+    <div>
+      @yield('button')
+    </div>
+  </div>
+
+  <div id="intro-carousel" class="owl-carousel" >
+    @foreach($slider as $Slider)
+    <div class="item"> <img src="{{url('img/inicover/'.$Slider->slider_photo)}}" alt="{{$Slider->picture_title}}"> </div>
+    @endforeach
+  </div>
+
+</section><!-- #intro -->
+@endsection
+
 @section('content')
 
 <section id="profil">
@@ -78,37 +103,17 @@
         <h2>Struktur Organisasi</h2>
       </div>
       <div class="row">
-        <div class="col-lg-3 col-md-6">
+        @foreach($structures as $Structure)
+        <div class="col-lg-2 col-md-6">
           <div class="member">
-            <div class="pic"><img src="img/team-1.jpg" alt=""></div>
+            <div class="pic"><img src="{{asset('images-struktur/'.$Structure->photo)}}" alt=""></div>
             <div class="details">
-              <h4>Walter White</h4>
-              <span>Chief Executive Officer</span>
-              <div class="social">
-                <a href=""><i class="fa fa-twitter"></i></a>
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-google-plus"></i></a>
-                <a href=""><i class="fa fa-linkedin"></i></a>
-              </div>
+              <h4>{{$Structure->nama}}</h4>
+              <span style="min-height: 40px;">{{$Structure->jabatan}}</span>
             </div>
           </div>
         </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="member">
-            <div class="pic"><img src="img/team-2.jpg" alt=""></div>
-            <div class="details">
-              <h4>Sarah Jhinson</h4>
-              <span>Product Manager</span>
-              <div class="social">
-                <a href=""><i class="fa fa-twitter"></i></a>
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-google-plus"></i></a>
-                <a href=""><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
     </div>
   </div>
   </section><!-- #team -->
@@ -137,9 +142,6 @@
   </div>
 </section><!-- #portfolio -->
 
-<!--==========================
-  Contact Section
-============================-->
 <section id="contact" class="wow fadeInUp">
   <div class="container">
     <div class="section-header">
@@ -148,34 +150,37 @@
     </div>
 
     <div class="row contact-info">
+      <?php $x = 1; ?>
+      @foreach($contacts as $Contact)
+      <?php if($x == 1){ ?>
 
-      <div class="col-md-4">
-        <div class="contact-address">
-          <i class="ion-ios-location-outline"></i>
-          <h3>Address</h3>
-          <address>A108 Adam Street, NY 535022, USA</address>
+        <div class="col-md-6">
+          <div class="contact-address">
+            <i class="ion-ios-location-outline"></i>
+            <h3>{{$Contact->jenis_kontak}}</h3>
+            <address>{{$Contact->kontak}}</address>
+          </div>
         </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="contact-phone">
-          <i class="ion-ios-telephone-outline"></i>
-          <h3>Phone Number</h3>
-          <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+      <?php }else{ ?>
+
+        <div class="col-md-6">
+          <div class="contact-phone">
+            <i class="ion-ios-telephone-outline"></i>
+            <h3>{{$Contact->jenis_kontak}}</h3>
+            <p>{{$Contact->kontak}}</p>
+          </div>
         </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="contact-email">
-          <i class="ion-ios-email-outline"></i>
-          <h3>Email</h3>
-          <p><a href="mailto:Mahathirmuhammad02@gmail.com">info@example.com</a></p>
-        </div>
-      </div>
 
+      <?php } $x++;?>
+      @endforeach
     </div>
   </div>
 
   <!-- <div id="google-map" data-latitude="40.713732" data-longitude="-74.0092704"></div> -->
 </section>
+<!--==========================
+  Contact Section
+============================-->
 @endsection
